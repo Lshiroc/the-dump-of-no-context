@@ -1,0 +1,365 @@
+@import url('../fonts/fonts-boska/WEB/css/boska.css');
+@import url('../fonts/fonts-satoshi/WEB/css/satoshi.css');
+
+*, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style-type: none;
+}
+
+body {
+    font-size: 100%;
+    font-family: 'Satoshi-Medium', sans-serif;
+}
+
+.section-x {
+    max-width: 1250px;
+    margin: 0 auto;
+}
+
+.padding-x {
+    padding: 0 25px;
+}
+
+.section-title {
+    font-family: 'Boska', sans-serif;
+    margin-bottom: 30px;
+    font-size: 25px;
+}
+
+/* Header - Club Info */
+
+.header {
+    margin-bottom: 80px;
+}
+
+.navbar {
+    height: 70px;
+    /* border: 1px solid black; */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: 'Boska', sans-serif;
+    font-size: 27px;
+    font-weight: 600;
+}
+
+.logo a, .logo a:visited {
+    color: black;
+}
+
+.menu {
+    display: flex;
+}
+
+.menu-item {
+    margin-left: 30px;
+    font-size: 18px;
+}
+
+.menu-item a, .menu-item a:visited {
+    color: #161616;
+}
+
+.menu-item:first-child {
+    margin-left: 0;
+}
+
+.warning-container {
+    margin-bottom: 40px;
+}
+
+.boldText {
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.warning {
+    width: 100%;
+    background: rgb(255, 225, 58);
+    font-size: 17px;
+    padding: 5px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.warning p {
+    display: flex;
+    align-items: center;
+    column-gap: 5px;
+}
+
+.warning .close {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+
+/*.club-info {
+    display: grid;
+    grid-template-columns: 150px 400px;
+    column-gap: 20px;
+}
+
+.club-img {
+    width: 150px;
+    height: 190px;
+    background-color: lightgray;
+}
+
+.club-info-text {
+    font-family: 'Boska', sans-serif;
+    width: 400px;
+}
+
+.club-name {
+    margin-bottom: 10px;
+}
+
+.club-info-context{
+    font-family: 'Satoshi-Medium', sans-serif;
+    font-size: 16px;
+    text-align: justify;
+}*/
+/* Replies - Main */
+
+main {
+    margin-bottom: 80px;
+}
+
+.replies {
+    display: grid;
+    grid-template-columns: calc(32.5% - 15px) calc(32.5% - 15px) calc(32.5% - 15px);
+    grid-template-rows: auto auto;
+    justify-content: space-between;
+    row-gap: 45px;
+    margin-bottom: 120px;
+}
+
+.reply {
+    padding: 20px 20px;
+    /* border: 1px solid gray; */
+    border-radius: 8px;
+    box-shadow: 0px 8px 30px -3px #d6d6d6;
+    height: min-content;
+}
+
+.reply-top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+}
+
+.reply-author {
+    display: grid;
+    grid-template-columns: 62px auto;
+    grid-template-rows: auto;
+    align-items: start;
+}
+
+.reply-author-img {
+    width: 52px;
+    height: 52px;
+    border: 1px solid red;
+    border-radius: 100%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.reply-author-name {
+    font-family: 'Satoshi-Medium', sans-serif;
+    font-size: 18px;
+}
+
+.reply-author-title {
+    font-family: 'Satoshi-Medium', sans-serif;
+}
+
+.reply-text {
+    font-family: 'Satoshi-MediumItalic', sans-serif;
+    font-size: 17px;
+    white-space: pre-wrap;
+}
+
+.reply-features {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 23px;
+    align-self: start;
+    margin-top: 1px;
+}
+
+.reply-info-btn {
+    font-size: 20px;
+    position: relative;
+}
+
+.reply-info-btn .iconify {
+    align-self: start;
+    display: block;
+    cursor: pointer;
+}
+
+.reply-info-btn:hover .description-box{
+    display: block;
+}
+
+.reply-copy {
+    font-size: 22px;
+    position: relative;
+    top: -3px;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.description-box {
+    display: none;
+    width: 330px;
+    background-color: #F6F6F6;
+    border: 1px solid #BCBCBC;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    padding: 10px 15px;
+    position: absolute;
+    top: 11px;
+    right: 11px;
+}
+
+.thread {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.thread .iconify {
+    font-size: 22px;
+}
+
+.thread-title {
+    font-family: 'Boska-Bold', sans-serif;
+    font-size: 22px;
+}
+
+.description {
+    font-size: 16px;
+}
+
+/* Lore */
+
+.lore {
+    display: grid;
+    grid-template-columns: 350px auto;
+    grid-template-rows: 380px;
+    column-gap: 50px;
+}
+
+.lore-content {
+    overflow-y: scroll;
+    /* background: #f3f3f3; */
+    box-shadow: 0px 8px 30px -3px #d6d6d6;
+    border-radius: 5px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    padding: 10px;
+}
+
+.lore-content::-webkit-scrollbar {
+    width: 8px;
+    background: rgb(235, 235, 235);
+    border-radius: 4px;
+}
+
+.lore-content::-webkit-scrollbar-thumb {
+    background: rgb(209, 209, 209);
+    border-radius: 4px;
+}
+
+.lore-content::-webkit-scrollbar-thumb:hover {
+    background: rgb(189, 189, 189);
+}
+
+.lore-upper {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.lore-content-title {
+    padding: 3px 0;
+    font-size: 17px;
+    cursor: pointer;
+}
+
+.lore-content-subtitle {
+    padding-left: 20px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.lore-content-title:hover, .lore-content-subtitle:hover {
+    text-decoration: underline;
+}
+
+.lore-item {
+    position: relative;
+    padding-bottom: 30px;
+}
+
+.lore-title {
+    margin-bottom: 20px;
+    font-size: 23px;
+}
+
+.lore-p {
+    white-space: pre-line
+}
+
+.lore-p:not(:first-child) {
+    margin-top: 10px;
+}
+
+.keep-reading {
+    background: linear-gradient(to top, #ebebeb 10%, transparent);
+    border-radius: 5px;
+    display: grid;
+    justify-content: center;
+    align-items: flex-end;
+    padding-bottom: 20px;
+    font-size: 18px;
+    position: absolute;
+    width: 100%;
+    height: 160px;
+    bottom: 0;
+}
+
+/* Footer */
+
+.footer {
+    border-top: 1px solid #161616;
+}
+
+.footer-content {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+.footer-content a {
+    color: black;
+    text-decoration: underline;
+}
+
+.footer-content a:visited {
+    color: black;
+    text-decoration: underline;
+}
