@@ -13,14 +13,28 @@ function App() {
     const [context, setContext] = useState('');
     const [allLore, setLore] = useState([]);
     const [loreText, setLoreText] = useState([]);
-    const lore = useSelector(state => state.loreReducer.lore);
+    const [test, setTest] = useState([]); // Test
+    // const lore = useSelector(state => state.loreReducer.lore);
     const tedd = document.createElement("a");
     const teddText = document.createTextNode("MAL")
     let con = 0;
     tedd.appendChild(teddText);
+    // useEffect(() => {
+    //     setLore(lore);
+    // }, [])
+
     useEffect(() => {
-        setLore(lore);
+        getDocs(loreRef)
+        .then(response => {
+            setLore(response.docs.map((item) => {
+                return { ...item.data(), id: item.id};
+            }))
+        })
     }, [])
+
+    useEffect(() => {
+        console.log("lmao ufckin",test);
+    }, [test])
 
     useEffect(() => {
         getDocs(collectionRef)
@@ -144,7 +158,7 @@ function App() {
                         <h4 className="lore-upper">Content</h4>
                         <ul className="lore-titles">
                             {
-                                lore.map(e => (
+                                allLore.map(e => (
                                     e.sub ? (
                                         <ul>
                                             <li className="lore-content-subtitle" onClick={() => getContext(e.title)}>- {e.title}</li>

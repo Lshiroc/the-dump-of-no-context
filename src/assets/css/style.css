@@ -321,6 +321,7 @@ main {
 .lore-p {
     white-space: pre-line;
     font-size: 18px;
+    text-align: justify;
 }
 
 .lore-p a{
