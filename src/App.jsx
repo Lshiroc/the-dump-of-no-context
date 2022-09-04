@@ -59,7 +59,7 @@ function App() {
             for(let i = 0; i < temp.length; i++) {
                 for(let j = 0; j < users.length; j++) {
                     if(temp[i].includes(users[j].username)) {
-                        temp[i] = <span><a target="_blank" href={`https://myanimelist.net/profile/${users[j].username}`}>{users[j].username}</a>&nbsp;</span>;
+                        temp[i] = <span><a target="_blank" href={`https://myanimelist.net/profile/${users[j].username}`}>@{users[j].username}</a>&nbsp;</span>;
                         j = users.length;
                     }
                 }
