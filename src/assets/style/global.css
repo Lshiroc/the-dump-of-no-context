@@ -1,0 +1,66 @@
+@import url("../fonts/fonts-boska/WEB/css/boska.css");
+@import url("../fonts/fonts-satoshi/WEB/css/satoshi.css");
+*, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+}
+
+body {
+  font-size: 100%;
+  font-family: "Satoshi-Medium", sans-serif;
+}
+
+.section-x {
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
+.padding-x {
+  padding: 0 25px;
+}
+
+.section-title {
+  font-family: "Boska", sans-serif;
+  margin-bottom: 30px;
+  font-size: 25px;
+}
+
+.warning-container {
+  margin-bottom: 40px;
+}
+
+.boldText {
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.warning {
+  width: 100%;
+  background: rgb(255, 225, 58);
+  font-size: 17px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.warning p {
+  display: flex;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.warning .close {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+main {
+  margin-bottom: 80px;
+}
+
+/*# sourceMappingURL=global.css.map */

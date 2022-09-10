@@ -1,0 +1,24 @@
+/* Footer */
+
+.footer {
+    border-top: 1px solid #161616;
+}
+
+.footerContent {
+    font-size: 18px;
+    text-align: center;
+    padding: 10px 0;
+    letter-spacing: 1px;
+    word-spacing: 4px;
+}
+
+.footerContent a {
+    color: #9B5DE5;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.footerContent a:visited {
+    color: #9B5DE5;
+    text-decoration: underline;
+}
