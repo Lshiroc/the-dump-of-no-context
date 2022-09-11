@@ -1,7 +1,9 @@
 import style from './header.module.scss';
+import { useLocation } from 'react-router-dom';
+import { useState, useEffect, setState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-export default function Header() {
+export default function Header() { 
     return (
         <>
             <header className={`section-x padding-x ${style.header}`}>

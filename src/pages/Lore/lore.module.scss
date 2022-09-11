@@ -1,12 +1,54 @@
+
+.loreNavContainer {
+    display: none;
+    margin-bottom: 50px;
+    border-top: 1px solid rgb(196, 196, 196);
+    border-bottom: 1px solid rgb(196, 196, 196);
+
+    .loreNav {
+        display: flex;
+        align-items: center;
+        .loreTabMobile {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 30px;
+            height: 30px;
+            border-right: 1px solid rgb(196, 196, 196);
+            border-left: 1px solid rgb(196, 196, 196);
+            cursor: pointer;
+            img {
+                width: 24px;
+                display: inline-block;
+            }
+        }
+        .pagePath {
+            font-size: 18px;
+            padding-left: 10px;
+            // display: flex;
+            // align-items: center;
+            // column-gap: 10px;    
+
+            span {
+                font-weight: 600;
+            }
+        } 
+    }
+}
+
 .loreContainer {
     display: grid;
     grid-template-columns: 30% 65%;
     justify-content: space-between;
     column-gap: 30px;
+    margin-top: 60px;
     margin-bottom: 90px;
+    position: relative;
 }
 
-.loreTableContainer {}
+.loreTableContainer {
+    transition: 0.4s
+}
 
 .loreTableContainer h1 {
     font-size: 26px;
@@ -102,9 +144,10 @@ ul.loreTableSub {
 
         .loreTitle:hover {
             color: #9B5DE5;
-
+            text-decoration: underline;
             span {
                 display: inline-block;
+                text-decoration: underline;
             }
         }
     }
@@ -113,6 +156,7 @@ ul.loreTableSub {
         font-size: 19px;
         line-height: 28px;
         white-space: pre-line;
+        text-align: justify;
         margin-bottom: 25px;
 
 
@@ -125,7 +169,8 @@ ul.loreTableSub {
     }
 
     .pagination {
-        display: flex;
+        display: grid;
+        grid-template-columns: auto auto;
         justify-content: space-between;
 
         @mixin prevNext() {
@@ -150,5 +195,36 @@ ul.loreTableSub {
             color: white;
             background-color: #9B5DE5;
         }
+
+        .disabledBtn {
+            display: none;
+        }
+
     }
+}
+
+@media screen and (max-width: 768px) {
+    .loreNavContainer {
+        display: block;
+    }
+
+    .loreContainer {
+        grid-template-columns: 100%;
+        margin-top: 0;
+        
+        .loreTableContainer {
+            background: white;
+            position: absolute;
+            top: 0;
+            transform: translateX(-100%);
+        }
+        .openMobileNav {
+            width: 100%;
+            padding: 25px;
+            transform: translateX(0%);
+            margin-top: -50px;
+            overflow: hidden;
+        }
+    }
+
 }

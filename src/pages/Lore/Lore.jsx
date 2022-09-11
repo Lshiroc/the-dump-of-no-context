@@ -4,6 +4,8 @@ import { useEffect, useInsertionEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import style from './lore.module.scss';
+import loreNav from './../../assets/images/loreNav-icon.svg';
+import arrowRight from './../../assets/images/arrow-right-icon.svg';
 
 export default function Lore() {
     const usersRef = collection(database, "users");
@@ -15,6 +17,8 @@ export default function Lore() {
     const [loreText, setLoreText] = useState([]);
     const [test, setTest] = useState([]); // Test
     const [titleColor, setTitleColor] = useState('');
+    const [contentCounter, setContentCounter] = useState('');
+    const [mobileLore, setMobileLore] = useState(false);
     const { contentTitle } = useParams();
 
 
@@ -50,6 +54,7 @@ export default function Lore() {
             .then(() => console.log(users))
     }, [])
 
+    console.log(contentCounter)
     const getContext = (c_title) => {
         let tempCounter = 0;
         console.log("dsd", allLore);
@@ -58,17 +63,19 @@ export default function Lore() {
             tempCounter++;
             if (e.title === c_title) {
                 console.log("hueery", e)
-                check = [e, tempCounter];
-                console.log(tempCounter)
+                check = e;
+                // Getting id for making 'previous' and 'next' button links
+                setContentCounter(tempCounter);
+
             }
         })
         if (check) {
-            console.log("hmm", check[1])
+            console.log("hmm", check)
             setContext(check)
 
 
             // Finding usernames and replacing them with links
-            let temp = check[0].text.split(' ');
+            let temp = check.text.split(' ');
             for (let i = 0; i < temp.length; i++) {
                 for (let j = 0; j < users.length; j++) {
                     if (temp[i].includes(users[j].username)) {
@@ -79,44 +86,53 @@ export default function Lore() {
             }
             setLoreText(temp);
         }
+
     }
 
     useEffect(() => {
         let check = 0;
         allLore.map((e) => {
-            let temp = e.title.replaceAll(' ','-').replaceAll('/', '-').replaceAll('?','').replaceAll('\'', '').replace(',', '').replaceAll('.','').toLowerCase();
+            let temp = e.title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replace(',', '').replaceAll('.', '').toLowerCase();
             console.log(temp)
-            if(temp === contentTitle) {
+            if (temp === contentTitle) {
                 console.log("found", e.title)
                 getContext(e.title);
                 check++;
             }
         });
-        if(check < 1) {
+        if (check < 1) {
             getContext("Intro");
         }
     }, [allLore])
 
     const makeLink = (title) => {
-        let tempLink = 'http://127.0.0.1:5173/lore/' + title.replaceAll(' ','-').replaceAll('/', '-').replaceAll('?','').replaceAll('\'', '').replaceAll(',', '').replaceAll('.','').toLowerCase();
+        let tempLink = 'http://127.0.0.1:5173/lore/' + title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replaceAll(',', '').replaceAll('.', '').toLowerCase();
         navigator.clipboard.writeText(tempLink);
     }
 
     return (
         <>
+            <div className={style.loreNavContainer}>
+                <div className={`section-x padding-x ${style.loreNav}`}>
+                    <div className={style.loreTabMobile} onClick={() => setMobileLore(!mobileLore)}>
+                        <img src={loreNav} alt="" />
+                    </div>
+                    <div className={style.pagePath}>Lore <span>{`>`}</span> {context.title} </div>
+                </div>
+            </div>
             <div className={`section-x padding-x ${style.loreContainer}`}>
-                <div className={style.loreTableContainer}>
+                <div className={`${style.loreTableContainer} ${mobileLore ? style.openMobileNav : ''}`}>
                     <h1>Content Of The Lore</h1>
                     <ul className={style.loreTable}>
                         {
-                            allLore.map((item) => (
+                            allLore.map((item, key) => (
                                 item.sub ? (
-                                    <ul className={style.loreTableSub}>
+                                    <ul key={key} className={style.loreTableSub}>
                                         <li className={`${style.loreTableSubtitle} ${item.title === context.title ? style.chosen : ''}`}
                                             onClick={() => getContext(item.title)}>{item.title}</li>
                                     </ul>
                                 ) : (
-                                    <li className={`${style.loreTableTitle} ${item.title === context.title ? style.chosen : ''} `} 
+                                    <li key={key} className={`${style.loreTableTitle} ${item.title === context.title ? style.chosen : ''} `}
                                         onClick={() => getContext(item.title)}>{item.id}. {item.title}</li>
                                 )
                             ))
@@ -143,8 +159,13 @@ export default function Lore() {
                         }
                     </div>
                     <div className={style.pagination}>
-                        <div className={style.prev}>previous</div>
-                        <div className={style.next}>next</div>
+                        <div className={`${style.prev} ${contentCounter === 1 ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter - 2].title)}>previous</div>
+                        {
+                            contentCounter === 1 || contentCounter === allLore.length ? (
+                                <span></span>
+                            ) : ''
+                        }
+                        <div className={`${style.next} ${contentCounter === allLore.length ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter].title)}>next</div>
                     </div>
                 </div>
             </div>
