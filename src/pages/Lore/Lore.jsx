@@ -106,7 +106,7 @@ export default function Lore() {
     }, [allLore])
 
     const makeLink = (title) => {
-        let tempLink = 'http://127.0.0.1:5173/lore/' + title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replaceAll(',', '').replaceAll('.', '').toLowerCase();
+        let tempLink = 'http://the-dump-of-btv.netlify.app/lore/' + title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replaceAll(',', '').replaceAll('.', '').toLowerCase();
         navigator.clipboard.writeText(tempLink);
     }
 
