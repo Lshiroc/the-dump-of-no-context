@@ -35,6 +35,83 @@
     color: #161616;
 }
 
+// .menuItem a.active {
+//     color: #9B5DE5 !important;
+// }
+
 .menuItem:first-child {
     margin-left: 0;
+}
+
+.mobileMenuBtn {
+    width: 40px;
+    height: 40px;
+    border: 2px solid #9B5DE5;
+    border-radius: 5px;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+
+    img {
+        width: 25px;
+        filter: invert(46%) sepia(97%) saturate(2999%) hue-rotate(240deg) brightness(94%) contrast(90%);
+    }
+}
+
+.menuBtnOpen {
+    background-color: #9B5DE5;
+    border: 2px solid #9B5DE5;
+
+    img {
+        filter: invert(99%) sepia(1%) saturate(3%) hue-rotate(6deg) brightness(101%) contrast(100%);
+    }
+}
+
+.toggleMenu {
+    transform-origin: top;
+    transform: scaleY(0);
+    max-height: 0;
+    transition: 0.3s;
+
+    .toggleMenuItem {
+        font-size: 19px;
+        padding: 15px;
+    }
+
+    .toggleMenuItem:nth-child(2) {
+        border-top: 1px solid rgb(196, 196, 196);
+        border-bottom: 1px solid rgb(196, 196, 196);
+    }
+
+    .toggleMenuItem:nth-child(3) {
+        border-bottom: 1px solid rgb(196, 196, 196);
+    }
+
+    .toggleMenuItem a, .toggleMenuItem a:visited {
+        color: #161616;
+    }
+
+    // .toggleMenuItem a.active {
+    //     color: #9B5DE5;
+    // }
+}
+
+.openToggleMenu {
+    transform: scaleY(1);
+    max-height: 300px;
+}
+
+@media screen and (max-width: 768px) {
+    .logo {
+        font-size: 25px;
+    }
+
+    .menu {
+        display: none;
+    }
+
+    .mobileMenuBtn {
+        display: flex;
+    }
 }

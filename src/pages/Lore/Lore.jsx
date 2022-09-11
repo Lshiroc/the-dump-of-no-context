@@ -85,6 +85,7 @@ export default function Lore() {
                 }
             }
             setLoreText(temp);
+            setMobileLore(false);
         }
 
     }
@@ -112,32 +113,33 @@ export default function Lore() {
 
     return (
         <>
-            <div className={style.loreNavContainer}>
-                <div className={`section-x padding-x ${style.loreNav}`}>
-                    <div className={style.loreTabMobile} onClick={() => setMobileLore(!mobileLore)}>
-                        <img src={loreNav} alt="" />
+            <div className={`${style.main} ${context.text ? '' : style.pending }`}>
+                <div className={style.loreNavContainer}>
+                    <div className={`section-x padding-x ${style.loreNav}`}>
+                        <div className={style.loreTabMobile} onClick={() => setMobileLore(!mobileLore)}>
+                            <img src={loreNav} alt="" />
+                        </div>
+                        <div className={style.pagePath}>Lore <span>{`>`}</span> {context.title} </div>
                     </div>
-                    <div className={style.pagePath}>Lore <span>{`>`}</span> {context.title} </div>
                 </div>
-            </div>
-            <div className={`section-x padding-x ${style.loreContainer}`}>
-                <div className={`${style.loreTableContainer} ${mobileLore ? style.openMobileNav : ''}`}>
-                    <h1>Content Of The Lore</h1>
-                    <ul className={style.loreTable}>
-                        {
-                            allLore.map((item, key) => (
-                                item.sub ? (
-                                    <ul key={key} className={style.loreTableSub}>
-                                        <li className={`${style.loreTableSubtitle} ${item.title === context.title ? style.chosen : ''}`}
-                                            onClick={() => getContext(item.title)}>{item.title}</li>
-                                    </ul>
-                                ) : (
-                                    <li key={key} className={`${style.loreTableTitle} ${item.title === context.title ? style.chosen : ''} `}
-                                        onClick={() => getContext(item.title)}>{item.id}. {item.title}</li>
-                                )
-                            ))
-                        }
-                        {/* <li className={`${style.loreTableTitle} ${style.chosen}`}>Intro</li>
+                <div className={`section-x padding-x ${style.loreContainer}`}>
+                    <div className={`${style.loreTableContainer} ${mobileLore ? style.openMobileNav : ''}`}>
+                        <h1>Content Of The Lore</h1>
+                        <ul className={style.loreTable}>
+                            {
+                                allLore.map((item, key) => (
+                                    item.sub ? (
+                                        <ul key={key} className={style.loreTableSub}>
+                                            <li className={`${style.loreTableSubtitle} ${item.title === context.title ? style.chosen : ''}`}
+                                                onClick={() => getContext(item.title)}>{item.title}</li>
+                                        </ul>
+                                    ) : (
+                                        <li key={key} className={`${style.loreTableTitle} ${item.title === context.title ? style.chosen : ''} `}
+                                            onClick={() => getContext(item.title)}>{item.id}. {item.title}</li>
+                                    )
+                                ))
+                            }
+                            {/* <li className={`${style.loreTableTitle} ${style.chosen}`}>Intro</li>
                     <li className={style.loreTableTitle}>Loli Kingdom</li>
                     <ul className={style.loreTableSub}>
                         <li className={style.loreTableSubtitle}>Creator</li>
@@ -145,27 +147,28 @@ export default function Lore() {
                         <li className={style.loreTableSubtitle}>The Result</li>
                     </ul>
                     <li className={style.loreTableTitle}>Infinity of the KxS</li> */}
-                    </ul>
-                </div>
-                <div className={style.loreContent}>
-                    <div className={style.loreTop}>
-                        <div className={style.loreTitle} onClick={() => makeLink(context.title)}>{context.id}. {context.title} <span>#</span></div>
+                        </ul>
                     </div>
-                    <div className={style.loreText}>
-                        {
-                            loreText.map((e) => (
-                                typeof (e) === "string" ? e.replaceAll('//n', '\n').concat(' ') : e
-                            ))
-                        }
-                    </div>
-                    <div className={style.pagination}>
-                        <div className={`${style.prev} ${contentCounter === 1 ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter - 2].title)}>previous</div>
-                        {
-                            contentCounter === 1 || contentCounter === allLore.length ? (
-                                <span></span>
-                            ) : ''
-                        }
-                        <div className={`${style.next} ${contentCounter === allLore.length ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter].title)}>next</div>
+                    <div className={`${style.loreContent} ${mobileLore ? style.loreContentOff : ''}`}>
+                        <div className={style.loreTop}>
+                            <div className={style.loreTitle} onClick={() => makeLink(context.title)}>{context.id}. {context.title} <span>#</span></div>
+                        </div>
+                        <div className={style.loreText}>
+                            {
+                                loreText.map((e) => (
+                                    typeof (e) === "string" ? e.replaceAll('//n', '\n').concat(' ') : e
+                                ))
+                            }
+                        </div>
+                        <div className={style.pagination}>
+                            <div className={`${style.prev} ${contentCounter === 1 ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter - 2].title)}>previous</div>
+                            {
+                                contentCounter === 1 || contentCounter === allLore.length ? (
+                                    <span></span>
+                                ) : ''
+                            }
+                            <div className={`${style.next} ${contentCounter === allLore.length ? style.disabledBtn : ''}`} onClick={() => getContext(allLore[contentCounter].title)}>next</div>
+                        </div>
                     </div>
                 </div>
             </div>

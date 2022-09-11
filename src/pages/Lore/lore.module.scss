@@ -1,3 +1,10 @@
+.pending {
+    
+}
+
+.pending *{
+    display: none;
+}
 
 .loreNavContainer {
     display: none;
@@ -8,6 +15,7 @@
     .loreNav {
         display: flex;
         align-items: center;
+
         .loreTabMobile {
             display: flex;
             justify-content: center;
@@ -17,14 +25,20 @@
             border-right: 1px solid rgb(196, 196, 196);
             border-left: 1px solid rgb(196, 196, 196);
             cursor: pointer;
+
             img {
                 width: 24px;
                 display: inline-block;
             }
         }
+
         .pagePath {
             font-size: 18px;
             padding-left: 10px;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 1;
+            overflow: hidden;
             // display: flex;
             // align-items: center;
             // column-gap: 10px;    
@@ -32,7 +46,7 @@
             span {
                 font-weight: 600;
             }
-        } 
+        }
     }
 }
 
@@ -126,6 +140,7 @@ ul.loreTableSub {
 }
 
 .loreContent {
+    display: block;
 
     .loreTop {
         // margin-bottom: 30px;
@@ -145,6 +160,7 @@ ul.loreTableSub {
         .loreTitle:hover {
             color: #9B5DE5;
             text-decoration: underline;
+
             span {
                 display: inline-block;
                 text-decoration: underline;
@@ -184,11 +200,13 @@ ul.loreTableSub {
             cursor: pointer;
         }
 
-        .prev, .next {
+        .prev,
+        .next {
             @include prevNext();
         }
 
-        .prev:hover, .next:hover {
+        .prev:hover,
+        .next:hover {
             // font-weight: 600;
             text-shadow: 0 0 1px #9B5DE5;
             box-shadow: 0 0 0 2px #9B5DE5;
@@ -211,20 +229,32 @@ ul.loreTableSub {
     .loreContainer {
         grid-template-columns: 100%;
         margin-top: 0;
-        
+
+        .loreContent {
+            .loreTop {
+                .loreTitle {
+                    font-size: 30px;
+                }
+            }
+        }
+
         .loreTableContainer {
             background: white;
             position: absolute;
+            width: 100%;
             top: 0;
             transform: translateX(-100%);
         }
+
         .openMobileNav {
-            width: 100%;
             padding: 25px;
             transform: translateX(0%);
             margin-top: -50px;
-            overflow: hidden;
         }
+    }
+
+    .loreContentOff {
+        display: none;
     }
 
 }
