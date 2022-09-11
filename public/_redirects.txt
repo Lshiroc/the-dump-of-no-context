@@ -1,1 +1,4 @@
-/*  /index.html  200
+/home           /
+/replies        /replies
+/lore           /lore
+/about          /about
