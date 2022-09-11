@@ -2,6 +2,7 @@ import { app, database } from '../../../firebaseConfig';
 import { collection, addDoc, getDocs, connectFirestoreEmulator } from 'firebase/firestore';
 import { useEffect, useInsertionEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Link } from 'react-router-dom'
 import style from './home.module.scss';
 
 export default function Home() {
@@ -134,10 +135,10 @@ export default function Home() {
                                 allLore.map(e => (
                                     e.sub ? (
                                         <ul>
-                                            <li className={style.loreContentSubtitle}>- {e.title}</li>
+                                            <li className={style.loreContentSubtitle}><Link to={`/lore/${e.title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replace(',', '').replaceAll('.', '').toLowerCase()}`}>- {e.title}</Link></li>
                                         </ul>
                                     ) : (
-                                        <li className={style.loreContentTitle}>{e.title}</li>
+                                        <li className={style.loreContentTitle}><Link to={`/lore/${e.title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replace(',', '').replaceAll('.', '').toLowerCase()}`}>{e.title}</Link></li>
                                     )
                                 ))
                             }
@@ -148,11 +149,16 @@ export default function Home() {
                         <div className={style.lorePreview}>
                             {/* {lore[0][0].context} */}
                             <p className={style.loreP}>
-                                {
+                                {/* {
                                     loreText.map(e => (
                                         typeof (e) === "string" ? e.replaceAll('//n', '\n').concat(' ') : e
                                     ))
-                                }
+                                } */}
+                                With the new update in the MAL mobile app. It allows users from their smartphone to join or create a club with their official app. Because of this, we get to see several clubs rising into fame and climbing the leaderboards to become the biggest club in MAL.<br /><br />
+
+                                As of 8th July 2022. The biggest club in MAL is currently held by "Recommendation Club" with a big 32 thousand members in their club. The second biggest club in MAL is "MAL Update 2.86 - Anime/Manga Tracker" with 30 thousand members. The top 2 clubs are far ahead from their competition. A proof of this is that the third biggest club "Harem&Ecchi Club" only having 19,600 members listed. That's a 10 thousand members gap between third place and the top 2.
+                                But there is a club that is undergoing a recent spike in popularity. The "Bad Taste Virgins" club is sitting with only 1.4k members to their name.
+                                <Link to='/lore/intro'>Read more in lore...</Link>
                             </p>
                         </div>
                         <div className={style.keepReading}><p>Read more in lore</p></div>

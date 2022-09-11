@@ -1,7 +1,7 @@
 import { app, database } from '../../../firebaseConfig';
 import { collection, addDoc, getDocs, connectFirestoreEmulator } from 'firebase/firestore';
 import { useEffect, useInsertionEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import style from './lore.module.scss';
 import loreNav from './../../assets/images/loreNav-icon.svg';
@@ -20,6 +20,7 @@ export default function Lore() {
     const [contentCounter, setContentCounter] = useState('');
     const [mobileLore, setMobileLore] = useState(false);
     const { contentTitle } = useParams();
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -56,6 +57,9 @@ export default function Lore() {
 
     console.log(contentCounter)
     const getContext = (c_title) => {
+        let navigateLink = c_title.replaceAll(' ', '-').replaceAll('/', '-').replaceAll('?', '').replaceAll('\'', '').replace(',', '').replaceAll('.', '').toLowerCase();
+        navigate(`/lore/${navigateLink}`);
+
         let tempCounter = 0;
         console.log("dsd", allLore);
         let check = '';
