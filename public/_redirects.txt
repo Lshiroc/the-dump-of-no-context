@@ -1,4 +1,0 @@
-/home           /
-/replies        /replies
-/lore           /lore
-/about          /about
